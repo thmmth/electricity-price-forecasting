@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+catboost
+xgboost
+lightgbm
+streamlit
+requests
+python-dotenv
+meteostat
