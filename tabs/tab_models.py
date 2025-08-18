@@ -9,13 +9,13 @@ DB_PATH = os.path.join(BASE_DIR, "..", "db", "data.db")
 
 # === MODEL DESCRIPTIONS PLACEHOLDER ===
 MODEL_DESCRIPTIONS = {
-    "LassoCV": "da inserire dopo",
-    "RidgeCV": "da inserire dopo",
-    "SVR": "da inserire dopo",
-    "CatBoostRegressor": "da inserire dopo",
-    "RandomForestRegressor": "da inserire dopo",
-    "XGBRegressor": "da inserire dopo",
-    "LGBMRegressor": "da inserire dopo"
+    "LassoCV": "LassoCV is a linear regression model that uses L1 regularisation and automatically selects the optimal regularisation parameter (alpha) through cross-validation. By applying L1 penalty, it encourages sparsity in the coefficients, meaning some coefficients can be shrunk to exactly zero, which makes it useful for feature selection when dealing with datasets that contain many irrelevant or correlated features.\n\nSource: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html",
+    "RidgeCV": "RidgeCV is a linear regression model that uses L2 regularisation and automatically selects the optimal regularisation parameter (alpha) through cross-validation. Unlike Lasso, Ridge does not set coefficients exactly to zero but instead shrinks them continuously, which helps to reduce model variance and handle multicollinearity among features.\n\nSource: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html",
+    "SVR": "SVR (Support Vector Regression) is a regression algorithm based on Support Vector Machines (SVM). It attempts to fit the best line within a certain margin of tolerance (epsilon), while using kernel functions to capture linear and non-linear relationships in the data. SVR is particularly effective in high-dimensional spaces and when the number of features exceeds the number of samples.\n\nSource: https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html",
+    "CatBoostRegressor": "CatBoostRegressor is a gradient boosting algorithm developed by Yandex that is particularly efficient with categorical features. It uses ordered boosting and target statistics to reduce overfitting and improve accuracy. CatBoost is designed to handle categorical variables natively without extensive preprocessing and often delivers strong performance with minimal hyperparameter tuning.\n\nSource: https://catboost.ai/en/docs/concepts/python-reference_catboostregressor",
+    "RandomForestRegressor": "RandomForestRegressor is an ensemble learning method that builds multiple decision trees and combines their predictions by averaging. It reduces overfitting compared to individual decision trees and improves predictive accuracy. Random forests handle both numerical and categorical features, are robust to noise, and provide feature importance estimates.\n\nSource: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html",
+    "XGBRegressor": "XGBRegressor is an implementation of gradient boosting optimized for speed and performance, developed as part of the XGBoost library. It builds an ensemble of decision trees sequentially, where each new tree corrects the errors of the previous ones. XGBoost incorporates regularisation, parallelization, and advanced optimization techniques, making it highly efficient and widely used in machine learning competitions.\n\nSource: https://xgboost.readthedocs.io/en/stable/python/python_api.html#xgboost.XGBRegressor",
+    "LGBMRegressor": "LGBMRegressor is a gradient boosting framework developed by Microsoft as part of the LightGBM library. It is optimized for speed and memory efficiency, using techniques such as histogram-based algorithms and leaf-wise tree growth. LightGBM can handle large-scale datasets with high dimensionality and supports both numerical and categorical features natively, making it a popular choice for regression and classification tasks.\n\nSource: https://lightgbm.readthedocs.io/en/stable/pythonapi/lightgbm.LGBMRegressor.html"
 }
 
 # === LOAD MODEL RESULTS FROM DB ===
