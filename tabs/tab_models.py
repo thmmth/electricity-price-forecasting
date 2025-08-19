@@ -18,6 +18,17 @@ MODEL_DESCRIPTIONS = {
     "LGBMRegressor": "LGBMRegressor is a gradient boosting framework developed by Microsoft as part of the LightGBM library. It is optimized for speed and memory efficiency, using techniques such as histogram-based algorithms and leaf-wise tree growth. LightGBM can handle large-scale datasets with high dimensionality and supports both numerical and categorical features natively, making it a popular choice for regression and classification tasks.\n\nSource: https://lightgbm.readthedocs.io/en/stable/pythonapi/lightgbm.LGBMRegressor.html"
 }
 
+# === MODEL ANALYSIS (NEW) ===
+MODEL_ANALYSIS = {
+    "LassoCV": "tbd",
+    "RidgeCV": "tbd",
+    "SVR": "tbd",
+    "CatBoostRegressor": "tbd",
+    "RandomForestRegressor": "tbd",
+    "XGBRegressor": "tbd",
+    "LGBMRegressor": "tbd"
+}
+
 # === LOAD MODEL RESULTS FROM DB ===
 @st.cache_data
 def load_model_results():
@@ -59,7 +70,6 @@ def render():
         # Display formatted table
         st.dataframe(df_display.sort_values(by="model_name"), use_container_width=True)
 
-
     else:
         model_data = df_results[df_results["model_name"] == selected_model].iloc[0]
 
@@ -86,3 +96,6 @@ def render():
         else:
             st.error(f"Plot not found at: {image_path}")
 
+        # === ANALYSIS (NEW, AFTER IMAGE) ===
+        st.subheader("🔎 Analysis")
+        st.markdown(MODEL_ANALYSIS.get(selected_model, "to be added"))
