@@ -41,10 +41,21 @@ def render():
 
     if selected_model == "overview":
         st.subheader("📋 All Model Results")
-        st.dataframe(
-            df_results.drop(columns=["image_path"]).sort_values(by="model_name"),
-            use_container_width=True
-        )
+
+        # Create a copy to avoid changing the cached DataFrame
+        df_display = df_results.drop(columns=["image_path"]).copy()
+
+        # Format columns with €/MWh
+        for col in ["val_mae", "val_rmse", "test_mae", "test_rmse"]:
+            df_display[col] = df_display[col].apply(lambda x: f"{x:.2f} €/MWh")
+
+        # Round R² values
+        for col in ["val_r2", "test_r2"]:
+            df_display[col] = df_display[col].apply(lambda x: f"{x:.3f}")
+
+        # Display formatted table
+        st.dataframe(df_display.sort_values(by="model_name"), use_container_width=True)
+
     else:
         model_data = df_results[df_results["model_name"] == selected_model].iloc[0]
 
