@@ -40,6 +40,9 @@ def render():
     selected_model = st.selectbox("📂 Select a model:", options)
 
     if selected_model == "overview":
+        st.subheader("📝 Highlights")
+        st.write("Among the different model families, **linear models** (LassoCV and RidgeCV) achieved the strongest results.\nLassoCV obtained the lowest test MAE (7.95 €/MWh) and the highest R² (0.757), followed closely by RidgeCV (MAE 8.83 €/MWh, R² 0.667).\nThe **SVR** model also performed well, with an R² of 0.684, confirming its ability to capture non-linear patterns while maintaining good generalisation.\n\nIn contrast, **ensemble tree methods** showed mixed outcomes. Boosting models such as CatBoost and LGBM delivered competitive results (R² around 0.65–0.66), but did not surpass the simpler linear approaches. XGBRegressor lagged slightly behind with R² = 0.610.\nThe **RandomForestRegressor** was the weakest performer, with the lowest R² on the test set (0.496), indicating limited ability to generalize in this task.\n\nOverall, the results suggest that **regularised linear models provide the best predictive accuracy** for this dataset, while non-linear and ensemble methods may require additional tuning or feature engineering to match their performance.")
+
         st.subheader("📋 All Model Results")
 
         # Create a copy to avoid changing the cached DataFrame
@@ -55,6 +58,7 @@ def render():
 
         # Display formatted table
         st.dataframe(df_display.sort_values(by="model_name"), use_container_width=True)
+
 
     else:
         model_data = df_results[df_results["model_name"] == selected_model].iloc[0]
