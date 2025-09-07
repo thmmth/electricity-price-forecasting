@@ -29,7 +29,8 @@ df["Date"] = pd.to_datetime(df["Date"], dayfirst=True, errors="coerce").dt.strft
 df.dropna(subset=["Date", "Zone", "Load [MW]"], inplace=True)
 
 # === AGGREGATE BY DATE AND ZONE ===
-agg_df = df.groupby(["Date", "Zone"], as_index=False)["Load [MW]"].sum()
+agg_df = df.groupby(["Date", "Zone"], as_index=False)["Load [MW]"].mean()
+agg_df["Load [MW]"] = agg_df["Load [MW]"].round(2)
 
 # === RENAME COLUMNS FOR DATABASE ===
 agg_df.rename(columns={
